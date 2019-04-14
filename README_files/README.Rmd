@@ -1,0 +1,42 @@
+---
+title: "README"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+============================================================================
+run_analysis.R is a script that utilizes tidyr and dplyr for tidying up the original dataset: Human Activity Recognition Using Smartphones Dataset (Version 1.0) by Smartlab - Non Linear Complex Systems Laboratory.
+
+$~$
+## run_analysis.R does the following:
+
+##### 1. Merges the training and the test sets to create one data set.
+- Test data and training data were read into R separately and processed separately. Processing was separating values (via strsplit()) and eliminating resulting blank entries (subsetting out "").
+- Processed raw data files and loaded into empty data frame.
+
+##### 2. Extracts only the measurements on the mean and standard deviation for each measurement. The following variables (containing the term "BodyBody") were removed as they were not defined in the raw data (features_info.txt):
+- "fBodyBodyAccJerkMag-mean()"      
+- "fBodyBodyAccJerkMag-meanFreq()" 
+- "fBodyBodyGyroMag-mean()"         
+- "fBodyBodyGyroMag-meanFreq()"    
+- "fBodyBodyGyroJerkMag-mean()"     
+- "fBodyBodyGyroJerkMag-meanFreq()"
+- "fBodyBodyAccJerkMag-std()"       
+- "fBodyBodyGyroMag-std()"         
+- "fBodyBodyGyroJerkMag-std()"   
+
+- Mean and standard deviation were extracted after creating data frames with processed data. grepl() was used to detect "mean()" and "std()" in variable names. 
+
+##### 3. Uses descriptive activity names to name the activities in the data set.
+- Read in and processed activity labels; renamed all activity numbers from raw data with corresponding string labels.
+- Subject and Labels were added after processing all other data variables.
+
+##### 4. Appropriately labels the data set with descriptive variable names.
+- 1-4 creates variable dataset_1.
+- Read in feature labels (variable names) and renamed data frames for test and training data set. 
+
+##### 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+- This is variable dataset_2.
+- dataset_2 was made by grouping the data by Subject and Label, and mutating each column by taking the mean after grouping. Only averaged columns were selected in a new dataframe via subsetting, and all multiple entries were removed from the dataset.
