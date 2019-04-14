@@ -1,3 +1,5 @@
+# Raw data files were contained in a folder "Clean Data"
+
 ####
 library(dplyr)
 library(tidyr)
