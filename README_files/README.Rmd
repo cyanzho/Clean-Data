@@ -9,6 +9,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ============================================================================
 run_analysis.R is a script that utilizes tidyr and dplyr for tidying up the original dataset: Human Activity Recognition Using Smartphones Dataset (Version 1.0) by Smartlab - Non Linear Complex Systems Laboratory.
 
+Raw data files were contained in a folder "Clean Data" on the desktop.
+
 $~$
 ## run_analysis.R does the following:
 

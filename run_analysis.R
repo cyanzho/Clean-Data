@@ -1,4 +1,4 @@
-# Raw data files were contained in a folder "Clean Data"
+# Raw data files were contained in a folder "Clean Data" on the desktop.
 
 ####
 library(dplyr)
@@ -75,6 +75,6 @@ dataset_1 <- df %>% select(-contains("BodyBody"))
 
 ####
 ## This is to make the new data set.
-mutant <- dataset_1 %>% group_by(Subject, Label) %>% mutate_each(funs(mean = mean(.)))
+mutant <- dataset_1 %>% group_by(Subject, Label) %>% mutate_each(list(mean = ~mean(.)))
 mutant <- mutant[,71:length(mutant)]
 dataset_2 <- mutant %>% distinct(.keep_all = TRUE)
